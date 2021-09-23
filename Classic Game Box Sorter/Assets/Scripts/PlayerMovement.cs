@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
 
     public InputAction move;
 
+    GameObject[,] grid;
+
     [SerializeField] Vector2 currentPosition;
     [SerializeField] Vector2 newPosition;
 
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        //grid = manager.nodes;
     }
 
     // Update is called once per frame
@@ -34,38 +37,35 @@ public class PlayerMovement : MonoBehaviour
         // Get the input from the move input
         Vector2 input = move.ReadValue<Vector2>();
 
-        int rowPositions = manager.rows[GetRow(currentPosition.y)].Count;
-
         // If input left or right, up or down
         switch (input.x)
         {
             case -1:
-                // Can't go left if on the furthest point
-                if (currentPosition.x != 0)
+                // Check if position is null
+                if (grid[(int)currentPosition.x - 1, (int)currentPosition.y] != null)
                 {
                     newPosition.x--;
                 }
                 break;
 
             case 1:
-                // Can't go right if on the furthest point
-                if (currentPosition.x != rowPositions)
+                if (grid[(int)currentPosition.x + 1, (int)currentPosition.y] != null)
                 {
                     newPosition.x++;
                 }
                 break;
 
             case 0 when input.y == -1:
-                if (currentPosition.y != 0)
+                if (grid[(int)currentPosition.x, (int)currentPosition.y - 1] != null)
                 {
-                    newPosition.y++;
+                    newPosition.y--;
                 }
                 break;
 
             case 0 when input.y == 1:
-                if (currentPosition.y != manager.rows[GetRow(currentPosition.y)].Count)
+                if (grid[(int)currentPosition.x, (int)currentPosition.y + 1] != null)
                 {
-                    newPosition.y--;
+                    newPosition.y++;
                 }
                 break;
 
@@ -73,32 +73,17 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        ChangePosition(newPosition);
+        // Change the player position based on newPosition if its different from currentPosition
+        if (newPosition != currentPosition)
+            ChangePosition(newPosition);
     }
 
     // Translates the player's position
     void ChangePosition(Vector2 newPos)
     {
-        // Get the row the player is on
-        List<GameObject> currentRow = manager.rows[GetRow(newPos.y)];
-
-        // Set position according to current row and position
-        transform.position = manager.GetPosition(currentRow, (int)newPos.x).transform.position;
+        transform.position = (grid[(int)newPos.x, (int)newPos.y].transform.position);
 
         // Set current position
         currentPosition = newPos;
-    }
-
-    int GetRow(float pos)
-    {
-        for (int i = 0; i < manager.rows.Count; i++)
-        {
-            if (pos == i)
-            {
-                return i;
-            }
-        }
-
-        return 0;
     }
 }

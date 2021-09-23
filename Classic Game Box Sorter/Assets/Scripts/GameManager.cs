@@ -1,44 +1,110 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] positions;
-    List<GameObject> row;
-    public List<List<GameObject>> rows;
+    public GameObject node;
 
-    [SerializeField] int rowAmount = 2;
+    [SerializeField] int rows, cols;
+    [SerializeField] float rowSpacing, colSpacing;
+    GameObject[,] nodes;
+    public bool[,] nodeMap;
 
     private void Awake()
     {
         gameObject.tag = "GameManager";
+        nodes = new GameObject[rows, cols];
 
-        for (int i = 0; i < rowAmount; i++)
+        for (int r = 0; r < rows; r++)
         {
-            // add a row to the rows List
-            //rows.Add(new row);
-        }
-
-        // Put the positions inside their respective rows
-        for (int i = 0; i < rows.Count; i++)
-        {
-            for (int j = 0; j < positions.Length; j++)
+            for (int c = 0; c < cols; c++)
             {
-                Position pos = positions[j].GetComponent<Position>();
-
-                // If the position's row is the same as the current row
-                if (pos.row == i)
+                if (HasNode(rows, cols))
                 {
-                    // Add position to that row
-                    rows[i].Add(positions[j]);
+                    GameObject n = Instantiate(node, MakeNodePosition(r, c, rowSpacing, colSpacing), Quaternion.identity);
+                    nodes[rows, cols] = n;
+                }
+                else
+                {
+                    nodes[rows, cols] = null;
                 }
             }
         }
     }
 
-    public GameObject GetPosition(List<GameObject> row, int i)
+    bool HasNode(int rows, int cols)
     {
-        return row[i];
+        return nodeMap[rows, cols];
+    }
+
+    Vector2 MakeNodePosition(float currentRow, float currentCol, float rSpacing, float cSpacing)
+    {
+        return new Vector2(currentRow * -rSpacing, currentCol * cSpacing);
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(GameManager)), CanEditMultipleObjects]
+public class GameManagerEditor : Editor
+{
+    private SerializedProperty rows, cols;
+    private SerializedProperty rowSpacing, colSpacing;
+    private SerializedProperty node;
+
+
+    void OnEnable()
+    {
+        rows = serializedObject.FindProperty("rows");
+        cols = serializedObject.FindProperty("cols");
+        rowSpacing = serializedObject.FindProperty("rowSpacing");
+        colSpacing = serializedObject.FindProperty("colSpacing");
+        node = serializedObject.FindProperty("node");
+    }
+
+    public override void OnInspectorGUI()
+    {
+        GameManager obj = (GameManager)target;
+        serializedObject.Update();
+        EditorGUILayout.PropertyField(node);
+        EditorGUILayout.PropertyField(rows);
+        EditorGUILayout.PropertyField(cols);
+        EditorGUILayout.PropertyField(rowSpacing);
+        EditorGUILayout.PropertyField(colSpacing);
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        EditorGUILayout.LabelField("Node map");
+
+        if (obj.nodeMap == null || obj.nodeMap.GetLength(0) != rows.intValue || obj.nodeMap.GetLength(1) != cols.intValue)
+        {
+            obj.nodeMap = new bool[rows.intValue, cols.intValue];
+
+            for (int r = 0; r < rows.intValue; r++)
+            {
+                for (int c = 0; c < cols.intValue; c++)
+                {
+                    obj.nodeMap[r, c] = true;
+                }
+            }
+        }
+
+        GUILayout.BeginVertical(GUI.skin.box);
+
+        for (int r = 0; r < rows.intValue; r++)
+        {
+            GUILayout.BeginHorizontal();
+            for (int c = 0; c < cols.intValue; c++)
+            {
+                obj.nodeMap[r, c] = GUILayout.Toggle(obj.nodeMap[r, c], "");
+            }
+            GUILayout.EndHorizontal();
+        }
+        
+        GUILayout.EndVertical();
+
+        serializedObject.ApplyModifiedProperties();
+    }
+}
+#endif
