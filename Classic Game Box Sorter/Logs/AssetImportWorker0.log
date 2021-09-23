@@ -15,11 +15,11 @@ D:/Program Files/GitHub/Repositories/CultFiction/Classic Game Box Sorter
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59021
+60536
 Successfully changed project path to: D:/Program Files/GitHub/Repositories/CultFiction/Classic Game Box Sorter
 D:/Program Files/GitHub/Repositories/CultFiction/Classic Game Box Sorter
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 420.57 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 492.36 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.20f1 (be552157821d)
 [Subsystems] Discovering subsystems at path D:/Program Files/Unity/Versions/2021.1.20f1/Editor/Data/Resources/UnitySubsystems
@@ -35,44 +35,5 @@ Initialize mono
 Mono path[0] = 'D:/Program Files/Unity/Versions/2021.1.20f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Program Files/Unity/Versions/2021.1.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Program Files/Unity/Versions/2021.1.20f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56152
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56652
 Begin MonoManager ReloadAssembly
-Registering precompiled unity dll's ...
-Register platform support module: D:/Program Files/Unity/Versions/2021.1.20f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
-Register platform support module: D:/Program Files/Unity/Versions/2021.1.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.053054 seconds.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 105.63 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in 13.528 seconds
-Domain Reload Profiling:
-	ReloadAssembly (13529ms)
-		BeginReloadAssembly (646ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (0ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (592ms)
-			LoadAssemblies (656ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (191ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (34ms)
-			SetupLoadedEditorAssemblies (284ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (106ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (106ms)
-				ProcessInitializeOnLoadMethodAttributes (62ms)
-				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (0ms)
-Platform modules already initialized, skipping
-Registering precompiled user dll's ...
-Registered in 0.154500 seconds.
