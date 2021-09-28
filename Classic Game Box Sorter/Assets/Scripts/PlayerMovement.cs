@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         grid = manager.GetNodes();
+
+        // Set the starting position to the middle of the top row
+        currentPosition = new Vector2(grid.GetLength(1) / 2, 0);
+        newPosition = currentPosition;
     }
 
     // Update is called once per frame
@@ -57,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case 0 when input.y == -1:
-                if (currentPosition.x == grid.GetLength((int)currentPosition.y) / 2)
+                if (currentPosition.x == grid.GetLength(1) / 2)
                 {
                     if (grid[(int)currentPosition.x, (int)currentPosition.y - 1] != null)
                     {
@@ -67,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case 0 when input.y == 1:
-                if (currentPosition.x == grid.GetLength((int)currentPosition.y) / 2)
+                if (currentPosition.x == grid.GetLength(1) / 2)
                 {
                     if (grid[(int)currentPosition.x, (int)currentPosition.y + 1] != null)
                     {

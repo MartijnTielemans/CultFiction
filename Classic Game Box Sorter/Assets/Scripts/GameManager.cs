@@ -12,11 +12,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] int rows, cols;
     [SerializeField] float rowSpacing, colSpacing;
     GameObject[,] nodes;
-    public bool[,] nodeMap;
+    public Array2D<bool> nodeMap = new Array2D<bool>(1, 4);
 
     private void Awake()
     {
         gameObject.tag = "GameManager";
+    }
+
+    private void Start()
+    {
         nodes = new GameObject[rows, cols];
 
         for (int r = 0; r < rows; r++)
@@ -84,7 +88,7 @@ public class GameManagerEditor : Editor
 
         if (obj.nodeMap == null || obj.nodeMap.GetLength(0) != rows.intValue || obj.nodeMap.GetLength(1) != cols.intValue)
         {
-            obj.nodeMap = new bool[rows.intValue, cols.intValue];
+            obj.nodeMap = new Array2D<bool>(rows.intValue, cols.intValue);
 
             for (int r = 0; r < rows.intValue; r++)
             {
