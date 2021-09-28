@@ -7,9 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    GameControls controls;
     SoundManager soundManager;
-
-    public InputAction cancel;
 
     [SerializeField] Animator fade;
     [SerializeField] Animator controlsAnim;
@@ -19,24 +18,29 @@ public class MenuManager : MonoBehaviour
 
     private void OnEnable()
     {
-        cancel.Enable();
+        if (controls == null)
+        {
+            controls = new GameControls();
+        }
+
+        controls.Enable();
     }
 
     private void OnDisable()
     {
-        cancel.Disable();
+        controls.Disable();
     }
 
-    private void Start()
+    private void Awake()
     {
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     private void Update()
     {
-        if (controlsScreenActive)
+        if (controls.UI.Cancel.triggered)
         {
-            if (cancel.triggered)
+            if (controlsScreenActive)
             {
                 StartCoroutine(RemoveControlsScreen(1f));
             }
@@ -82,7 +86,7 @@ public class MenuManager : MonoBehaviour
         FadeOutSound(soundManager.Music, 1.8f);
 
         yield return new WaitForSeconds(time);
-        fade.Play("Fade-In");
+        fade.Play("Fade_In");
 
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene(scene);
@@ -95,7 +99,7 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator QuitApplicationSequence(float time)
     {
-        fade.Play("Fade-In");
+        fade.Play("Fade_In");
         canMove = false;
         SetButtonInteractable(false);
         FadeOutSound(soundManager.Music, 0.9f);
