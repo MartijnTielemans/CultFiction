@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        //grid = manager.nodes;
+        grid = manager.GetNodes();
     }
 
     // Update is called once per frame
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 input = move.ReadValue<Vector2>();
 
         // If input left or right, up or down
+        // Can only move up or down in the middle of the map
         switch (input.x)
         {
             case -1:
@@ -56,16 +57,22 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case 0 when input.y == -1:
-                if (grid[(int)currentPosition.x, (int)currentPosition.y - 1] != null)
+                if (currentPosition.x == grid.GetLength((int)currentPosition.y) / 2)
                 {
-                    newPosition.y--;
+                    if (grid[(int)currentPosition.x, (int)currentPosition.y - 1] != null)
+                    {
+                        newPosition.y--;
+                    }
                 }
                 break;
 
             case 0 when input.y == 1:
-                if (grid[(int)currentPosition.x, (int)currentPosition.y + 1] != null)
+                if (currentPosition.x == grid.GetLength((int)currentPosition.y) / 2)
                 {
-                    newPosition.y++;
+                    if (grid[(int)currentPosition.x, (int)currentPosition.y + 1] != null)
+                    {
+                        newPosition.y++;
+                    }
                 }
                 break;
 
@@ -81,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     // Translates the player's position
     void ChangePosition(Vector2 newPos)
     {
-        transform.position = (grid[(int)newPos.x, (int)newPos.y].transform.position);
+        transform.position = grid[(int)newPos.x, (int)newPos.y].transform.position;
 
         // Set current position
         currentPosition = newPos;

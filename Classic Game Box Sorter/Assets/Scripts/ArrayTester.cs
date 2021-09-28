@@ -16,7 +16,6 @@ public class ArrayTester : MonoBehaviour
                 Debug.Log($"Item ({r},{c}) = {MyArray[r, c]}");
             }
         }
-        
     }
 
     // Update is called once per frame

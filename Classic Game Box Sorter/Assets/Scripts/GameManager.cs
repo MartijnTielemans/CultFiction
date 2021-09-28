@@ -45,6 +45,11 @@ public class GameManager : MonoBehaviour
     {
         return new Vector2(currentRow * -rSpacing, currentCol * cSpacing);
     }
+
+    public GameObject[,] GetNodes()
+    {
+        return nodes;
+    }
 }
 
 #if UNITY_EDITOR

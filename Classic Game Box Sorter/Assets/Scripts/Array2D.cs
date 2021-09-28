@@ -29,8 +29,6 @@ public class Array2D<T> : ISerializationCallbackReceiver
     {
         return array.GetLength(dimension);
     }
-
-    
         
     public Array2D(int rows, int cols) {
         this.rows = rows;
@@ -97,6 +95,4 @@ public class Array2D<T> : ISerializationCallbackReceiver
             array[indexes.x, indexes.y] = storage[i];
         }
     }
-
-
 }
