@@ -284,7 +284,7 @@ public class @GameControls : IInputActionCollection, IDisposable
                     ""id"": ""bd590ccc-2dad-4686-a763-ce418c7906e2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""Cancel"",
@@ -292,7 +292,7 @@ public class @GameControls : IInputActionCollection, IDisposable
                     ""id"": ""8ee16062-9d07-4fda-b58b-341e314f995b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [

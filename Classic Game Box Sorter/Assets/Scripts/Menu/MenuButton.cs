@@ -7,20 +7,11 @@ public class MenuButton : MonoBehaviour
 {
     MenuManager manager;
 
-    RectTransform currentPosition;
-    Vector2 originalPosition;
-    Vector2 selectedPosition;
-
     bool doOnce;
 
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MenuManager>();
-
-        // Set positions
-        currentPosition = GetComponent<RectTransform>();
-        originalPosition = currentPosition.anchoredPosition;
-        selectedPosition = originalPosition + Vector2.right * 5;
     }
 
     private void Update()
@@ -29,7 +20,7 @@ public class MenuButton : MonoBehaviour
         {
             doOnce = true;
         }
-        else if (EventSystem.current.currentSelectedGameObject != this.gameObject && originalPosition != GetComponent<RectTransform>().anchoredPosition)
+        else if (EventSystem.current.currentSelectedGameObject != this.gameObject)
         {
             if (doOnce)
             {
