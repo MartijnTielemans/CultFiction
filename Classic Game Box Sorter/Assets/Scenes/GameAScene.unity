@@ -682,6 +682,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3454087693970066208, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
+      propertyPath: nodeMap.cols
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454087693970066208, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
+      propertyPath: nodeMap.storage.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454087693970066208, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
+      propertyPath: nodeMap.storage.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454087693970066208, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
+      propertyPath: nodeMap.storage.Array.data[5]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454087693970066208, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
+      propertyPath: nodeMap.storage.Array.data[6]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6174169484495866513, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -764,11 +784,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.rows
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.storage.Array.size
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.storage.Array.data[0]
@@ -788,23 +808,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.storage.Array.data[4]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.storage.Array.data[5]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.storage.Array.data[6]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.storage.Array.data[7]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.storage.Array.data[8]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6886022220984738752, guid: 7cd7b4e4ee0da9f439d9744a73c9593b, type: 3}
       propertyPath: nodeMap.storage.Array.data[9]
@@ -823,6 +843,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 154199013052562051, guid: 9fcda280a158cb24e89f0e24e64eb154, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 154199013052562051, guid: 9fcda280a158cb24e89f0e24e64eb154, type: 3}
       propertyPath: MyArray.cols
       value: 4
@@ -845,7 +869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1315362466581549923, guid: 9fcda280a158cb24e89f0e24e64eb154, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1680186061237640089, guid: 9fcda280a158cb24e89f0e24e64eb154, type: 3}
       propertyPath: m_RootOrder

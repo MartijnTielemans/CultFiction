@@ -9,10 +9,10 @@ public class GameManager : MonoBehaviour
 {
     public GameObject node;
 
+    GameObject[,] nodes;
+    public Array2D<bool> nodeMap = new Array2D<bool>(2, 5);
     [SerializeField] int rows, cols;
     [SerializeField] float rowSpacing, colSpacing;
-    GameObject[,] nodes;
-    public Array2D<bool> nodeMap = new Array2D<bool>(1, 4);
 
     private void Awake()
     {
@@ -29,11 +29,13 @@ public class GameManager : MonoBehaviour
             {
                 if (HasNode(rows, cols))
                 {
+                    Debug.Log("1");
                     GameObject n = Instantiate(node, MakeNodePosition(r, c, rowSpacing, colSpacing), Quaternion.identity);
                     nodes[rows, cols] = n;
                 }
                 else
                 {
+                    Debug.Log("2");
                     nodes[rows, cols] = null;
                 }
             }
