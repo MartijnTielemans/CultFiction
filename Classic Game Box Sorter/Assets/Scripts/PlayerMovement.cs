@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     GameManager manager;
+    GridManager gridManager;
 
     public InputAction move;
 
@@ -13,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Vector2 currentPosition;
     [SerializeField] Vector2 newPosition;
+
+    [SerializeField] bool holdingPackage;
 
     private void OnEnable()
     {
@@ -28,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        grid = manager.GetNodes();
+        gridManager = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
+        grid = gridManager.GetNodes();
 
         // Set the starting position to the middle of the top row
         currentPosition = new Vector2(grid.GetLength(1) / 2, 0);
@@ -47,25 +51,25 @@ public class PlayerMovement : MonoBehaviour
         {
             case -1:
                 // Check if position is null
-                if (grid[(int)currentPosition.x - 1, (int)currentPosition.y] != null)
+                if (grid[(int)currentPosition.x, (int)currentPosition.y - 1] != null)
                 {
-                    newPosition.x--;
+                    newPosition.y--;
                 }
                 break;
 
             case 1:
-                if (grid[(int)currentPosition.x + 1, (int)currentPosition.y] != null)
+                if (grid[(int)currentPosition.x, (int)currentPosition.y + 1] != null)
                 {
-                    newPosition.x++;
+                    newPosition.y++;
                 }
                 break;
 
             case 0 when input.y == -1:
                 if (currentPosition.x == grid.GetLength(1) / 2)
                 {
-                    if (grid[(int)currentPosition.x, (int)currentPosition.y - 1] != null)
+                    if (grid[(int)currentPosition.x - 1, (int)currentPosition.y] != null)
                     {
-                        newPosition.y--;
+                        newPosition.x--;
                     }
                 }
                 break;
@@ -73,9 +77,9 @@ public class PlayerMovement : MonoBehaviour
             case 0 when input.y == 1:
                 if (currentPosition.x == grid.GetLength(1) / 2)
                 {
-                    if (grid[(int)currentPosition.x, (int)currentPosition.y + 1] != null)
+                    if (grid[(int)currentPosition.x + 1, (int)currentPosition.y] != null)
                     {
-                        newPosition.y++;
+                        newPosition.x++;
                     }
                 }
                 break;
@@ -96,5 +100,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Set current position
         currentPosition = newPos;
+    }
+
+    void DeliverPacket()
+    {
+
     }
 }

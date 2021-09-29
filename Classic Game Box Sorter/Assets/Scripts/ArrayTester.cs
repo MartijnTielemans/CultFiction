@@ -9,11 +9,11 @@ public class ArrayTester : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int r = 0; r < MyArray.GetLength(0); r++)
+        for (int c = 0; c < MyArray.GetLength(0); c++)
         {
-            for (int c = 0; c < MyArray.GetLength(1); c++)
+            for (int r = 0; r < MyArray.GetLength(1); r++)
             {
-                Debug.Log($"Item ({r},{c}) = {MyArray[r, c]}");
+                Debug.Log($"Item ({c},{r}) = {MyArray[c, r]}");
             }
         }
     }
